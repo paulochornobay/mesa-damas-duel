@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Checkers rules live only in `src/games/checkers/engine` (pure TS, no React); UI consumes the `CheckersEngine` interface via `checkersEngine` in `engine/index.ts` — keeps rules testable and out of JSX.
+- Ads only via `src/components/ads/AdSlot` (disabled by default, renders nothing in production) — never near the board or game buttons.
+- No backend/auth/network dependencies in V1 — app must run with plain `npm install && npm run dev`. Fonts load from Google with system fallbacks.
